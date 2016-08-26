@@ -2,7 +2,7 @@
   "name": "linter-slim-lint",
   "main": "./lib/linter-slim-lint",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Linter implementation of slim-lint",
   "keywords": [
   ],
   "activationCommands": {
@@ -14,5 +14,16 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-linter": "^7.0.0"
+  },
+  "package-deps": [
+    "linter"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
   }
 }

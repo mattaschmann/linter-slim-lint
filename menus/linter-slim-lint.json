@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle linter-slim-lint",
+        "command": "linter-slim-lint:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "linter-slim-lint",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "linter-slim-lint:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
