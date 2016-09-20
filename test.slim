@@ -1,0 +1,51 @@
+
+/ used in the sidebar of workers/show
+.sidebar_endpoint_list
+  = select_tag 'sort', options_for_select([['Highest Throughput','throughput'],['Slowest Average Execution Time','execution_time'],['Highest Latency','latency']])
+  table.highlighted-select-table
+    tbody
+    - @workers.each do |worker|
+      tr class="#{:selected if @current_job && @current_job == ['Job', worker[:full_name]].join("/")}"
+        td = link_to truncate(format_method_name(worker[:name]), length: 43),
+             app_worker_path(current_app, Base64.urlsafe_encode64(worker[:full_name]).strip)
+        td.throughput
+          = number_with_precision worker[:throughput], precision:  0, delimiter: ','
+          |&nbsp;/ min
+        td.execution_time
+          = number_with_precision worker[:execution_time], precision:  0, delimiter: ','
+          |&nbsp;ms
+        td.latency
+          = number_with_precision worker[:latency], precision: 1, delimiter: ','
+          |&nbsp;seconds
+
+javascript:
+  // sorting via the select input in the sidebar
+  $(function () {
+    $sidebarSort = $('.sidebar_endpoint_list #sort')
+    cookieName = "worker_sidebar_sort"
+
+    // When the sort dropdown changes
+    $sidebarSort.change(function () {
+      val = $(this).val();
+      Cookies.set(cookieName, val)                // Save off sort selection
+
+      $('.sidebar_endpoint_list td:not(:first-child)').hide(); // Name always stays shown, hide rest
+      $('.sidebar_endpoint_list td.' + $(this).val()).show();  // Show the one column we're sorting on
+      $('.sidebar_endpoint_list .' + val)                      // Find the td we need to sort on
+        .sortElements(function (a, b) {                        // Sort the results descending based on parsed number
+          a = parseFloat($(a).text().replace(',', ''));
+          b = parseFloat($(b).text().replace(',', ''));
+          return a > b ? -1 : 1;
+        }, function(){ return this.parentNode; });             // We want to sort the tr, not the td themselves
+    })
+
+    // Load any previously chosen sort
+    initialSort = Cookies.get(cookieName)
+    if (typeof initialSort !== "undefined") {
+      $sidebarSort.val(initialSort)
+    }
+
+    $sidebarSort.change();                                     // trigger .change() on page load
+
+    $(".highlighted-select-table").on("click", "tr", function () { window.location.href = $(this).find("a").attr("href") });
+  });
