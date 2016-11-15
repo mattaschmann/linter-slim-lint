@@ -1,10 +1,9 @@
 {
   "name": "linter-slim-lint",
   "main": "./lib/linter-slim-lint",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Linter implementation of slim-lint",
-  "keywords": ["slim-lint"],
+  "repository": "https://github.com/mattaschmann/linter-slim-lint",
   "license": "MIT",
   "engines": {
     "atom": ">=1.8.0 <2.0.0"

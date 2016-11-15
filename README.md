@@ -30,4 +30,3 @@ in your path.
 This is the name of your config file.  This file will be searched for, recursively backwards, from the location of
 the file you are currently editing.  Ideally, you can put the config file in your project root or your home folder,
 assuming your home folder is in the tree below your current file.  Defaults to `.slim-lint.yml`
-<!-- @Matt TODO change the package.json file to be correct -->
