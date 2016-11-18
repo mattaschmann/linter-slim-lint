@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.3
+
+* Remove redundant label tag
+* Add some documentation to the regexp
+
 ## 0.0.2
 
 * Add link to the result, by @5t111111
