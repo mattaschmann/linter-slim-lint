@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.4
+
+* Fix style issue with links
+
 ## 0.0.3
 
 * Remove redundant label tag
