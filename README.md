@@ -1,4 +1,3 @@
-<!-- @Matt TODO write up readme -->
 # linter-slim-lint
 
 This is a Atom linter plugin for [Linter](https://github.com/AtomLinter/Linter) which provides an interface to
