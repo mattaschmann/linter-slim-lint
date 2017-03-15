@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0
+
+* Migrated to comply with v2 of linter (big thanks to @gregawoods for the push).
+* Decided to have major version number mirror major linter version to avoid confusion.
+
 ## 0.0.4
 
 * Fix style issue with links
